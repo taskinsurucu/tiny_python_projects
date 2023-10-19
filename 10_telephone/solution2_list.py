@@ -12,24 +12,23 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Telephone',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Telephone", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
 
-    parser.add_argument('text', metavar='text', help='Input text or file')
+    parser.add_argument("text", metavar="text", help="Input text or file")
 
-    parser.add_argument('-s',
-                        '--seed',
-                        help='Random seed',
-                        metavar='seed',
-                        type=int,
-                        default=None)
+    parser.add_argument(
+        "-s", "--seed", help="Random seed", metavar="seed", type=int, default=None
+    )
 
-    parser.add_argument('-m',
-                        '--mutations',
-                        help='Percent mutations',
-                        metavar='mutations',
-                        type=float,
-                        default=0.1)
+    parser.add_argument(
+        "-m",
+        "--mutations",
+        help="Percent mutations",
+        metavar="mutations",
+        type=float,
+        default=0.1,
+    )
 
     args = parser.parse_args()
 
@@ -49,17 +48,17 @@ def main():
     args = get_args()
     text = args.text
     random.seed(args.seed)
-    alpha = ''.join(sorted(string.ascii_letters + string.punctuation))
+    alpha = "".join(sorted(string.ascii_letters + string.punctuation))
     len_text = len(text)
     num_mutations = round(args.mutations * len_text)
     new_text = list(text)
 
     for i in random.sample(range(len_text), num_mutations):
-        new_text[i] = random.choice(alpha.replace(new_text[i], ''))
+        new_text[i] = random.choice(alpha.replace(new_text[i], ""))
 
-    print('You said: "{}"\nI heard : "{}"'.format(text, ''.join(new_text)))
+    print('You said: "{}"\nI heard : "{}"'.format(text, "".join(new_text)))
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -2,5 +2,5 @@
 
 import pandas as pd
 
-df = pd.read_csv('inputs/exercises.csv')
+df = pd.read_csv("inputs/exercises.csv")
 print(df)

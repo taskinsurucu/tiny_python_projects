@@ -10,29 +10,30 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Heap abuse',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Heap abuse", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
 
-    parser.add_argument('-a',
-                        '--adjectives',
-                        help='Number of adjectives',
-                        metavar='adjectives',
-                        type=int,
-                        default=2)
+    parser.add_argument(
+        "-a",
+        "--adjectives",
+        help="Number of adjectives",
+        metavar="adjectives",
+        type=int,
+        default=2,
+    )
 
-    parser.add_argument('-n',
-                        '--number',
-                        help='Number of insults',
-                        metavar='insults',
-                        type=int,
-                        default=3)
+    parser.add_argument(
+        "-n",
+        "--number",
+        help="Number of insults",
+        metavar="insults",
+        type=int,
+        default=3,
+    )
 
-    parser.add_argument('-s',
-                        '--seed',
-                        help='Random seed',
-                        metavar='seed',
-                        type=int,
-                        default=None)
+    parser.add_argument(
+        "-s", "--seed", help="Random seed", metavar="seed", type=int, default=None
+    )
 
     args = parser.parse_args()
 
@@ -68,10 +69,10 @@ def main():
     """.strip().split()
 
     for _ in range(args.number):
-        adjs = ', '.join(random.sample(adjectives, k=args.adjectives))
-        print(f'You {adjs} {random.choice(nouns)}!')
+        adjs = ", ".join(random.sample(adjectives, k=args.adjectives))
+        print(f"You {adjs} {random.choice(nouns)}!")
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

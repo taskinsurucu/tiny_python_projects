@@ -5,8 +5,8 @@ from typing import List, NamedTuple, Optional
 
 
 class State(NamedTuple):
-    board: List[str] = list('.' * 9)
-    player: str = 'X'
+    board: List[str] = list("." * 9)
+    player: str = "X"
     quit: bool = False
     draw: bool = False
     error: Optional[str] = None

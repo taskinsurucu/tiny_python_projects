@@ -1,2 +1,2 @@
-d =2
-print('Hello, World!')
+d = 2
+print("Hello, World!")

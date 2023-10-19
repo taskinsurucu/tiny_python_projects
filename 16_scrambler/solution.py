@@ -3,8 +3,8 @@
 
 import argparse
 import os
-import re
 import random
+import re
 
 
 # --------------------------------------------------
@@ -12,17 +12,15 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Scramble the letters of words',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Scramble the letters of words",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('text', metavar='text', help='Input text or file')
+    parser.add_argument("text", metavar="text", help="Input text or file")
 
-    parser.add_argument('-s',
-                        '--seed',
-                        help='Random seed',
-                        metavar='seed',
-                        type=int,
-                        default=None)
+    parser.add_argument(
+        "-s", "--seed", help="Random seed", metavar="seed", type=int, default=None
+    )
 
     args = parser.parse_args()
 
@@ -41,17 +39,17 @@ def main():
     splitter = re.compile("([a-zA-Z](?:[a-zA-Z']*[a-zA-Z])?)")
 
     for line in args.text.splitlines():
-        print(''.join(map(scramble, splitter.split(line))))
+        print("".join(map(scramble, splitter.split(line))))
 
 
 # --------------------------------------------------
 def scramble(word):
     """For words over 3 characters, shuffle the letters in the middle"""
 
-    if len(word) > 3 and re.match(r'\w+', word):
+    if len(word) > 3 and re.match(r"\w+", word):
         middle = list(word[1:-1])
         random.shuffle(middle)
-        word = word[0] + ''.join(middle) + word[-1]
+        word = word[0] + "".join(middle) + word[-1]
 
     return word
 
@@ -73,5 +71,5 @@ def test_scramble():
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

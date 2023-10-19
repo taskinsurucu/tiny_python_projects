@@ -2,6 +2,7 @@
 """ Make ASCII table """
 
 import argparse
+
 import pandas as pd
 
 
@@ -10,29 +11,21 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Make ASCII table',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Make ASCII table",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('-c',
-                        '--cols',
-                        help='Number of columns',
-                        metavar='int',
-                        type=int,
-                        default=8)
+    parser.add_argument(
+        "-c", "--cols", help="Number of columns", metavar="int", type=int, default=8
+    )
 
-    parser.add_argument('-l',
-                        '--lower',
-                        help='Lower chr value',
-                        metavar='int',
-                        type=int,
-                        default=0)
+    parser.add_argument(
+        "-l", "--lower", help="Lower chr value", metavar="int", type=int, default=0
+    )
 
-    parser.add_argument('-u',
-                        '--upper',
-                        help='Upper chr value',
-                        metavar='int',
-                        type=int,
-                        default=128)
+    parser.add_argument(
+        "-u", "--upper", help="Upper chr value", metavar="int", type=int, default=128
+    )
 
     args = parser.parse_args()
 
@@ -61,25 +54,25 @@ def main():
     df = pd.DataFrame(cells)
 
     for i, row in df.T.iterrows():
-        print('  '.join(map(lambda v: v or ' ' * 5, row)))
+        print("  ".join(map(lambda v: v or " " * 5, row)))
 
 
 # --------------------------------------------------
 def cell(n):
     """Format a cell"""
 
-    return '{:3} {:5}'.format(
-        n, 'SPACE'
-        if n == 32 else 'DEL' if n == 127 else chr(n) if n >= 33 else 'NA')
+    return "{:3} {:5}".format(
+        n, "SPACE" if n == 32 else "DEL" if n == 127 else chr(n) if n >= 33 else "NA"
+    )
 
 
 # --------------------------------------------------
 def chunker(seq, size):
     """Chunk a list into bits"""
 
-    return (seq[pos:pos + size] for pos in range(0, len(seq), size))
+    return (seq[pos : pos + size] for pos in range(0, len(seq), size))
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

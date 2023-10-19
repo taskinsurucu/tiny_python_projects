@@ -11,18 +11,21 @@ def get_args():
     """get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Apples and bananas',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Apples and bananas",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('text', metavar='text', help='Input text or file')
+    parser.add_argument("text", metavar="text", help="Input text or file")
 
-    parser.add_argument('-v',
-                        '--vowel',
-                        help='The vowel to substitute',
-                        metavar='vowel',
-                        type=str,
-                        default='a',
-                        choices=list('aeiou'))
+    parser.add_argument(
+        "-v",
+        "--vowel",
+        help="The vowel to substitute",
+        metavar="vowel",
+        type=str,
+        default="a",
+        choices=list("aeiou"),
+    )
 
     args = parser.parse_args()
 
@@ -39,11 +42,11 @@ def main():
     args = get_args()
     text = args.text
     vowel = args.vowel
-    text = re.sub('[aeiou]', vowel, text)
-    text = re.sub('[AEIOU]', vowel.upper(), text)
+    text = re.sub("[aeiou]", vowel, text)
+    text = re.sub("[AEIOU]", vowel.upper(), text)
     print(text)
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

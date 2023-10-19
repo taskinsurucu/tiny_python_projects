@@ -11,10 +11,10 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Gematria',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Gematria", formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
 
-    parser.add_argument('text', metavar='text', help='Input text or file')
+    parser.add_argument("text", metavar="text", help="Input text or file")
 
     args = parser.parse_args()
 
@@ -31,14 +31,14 @@ def main():
     args = get_args()
 
     for line in args.text.splitlines():
-        print(' '.join(map(word2num, line.split())))
+        print(" ".join(map(word2num, line.split())))
 
 
 # --------------------------------------------------
 def word2num(word):
     """Sum the ordinal values of all the characters"""
 
-    return str(sum(map(ord, re.sub('[^A-Za-z0-9]', '', word))))
+    return str(sum(map(ord, re.sub("[^A-Za-z0-9]", "", word))))
 
 
 # --------------------------------------------------
@@ -52,5 +52,5 @@ def test_word2num():
 
 
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
